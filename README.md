@@ -2,9 +2,9 @@
 
 Skeleton for a Web Application based on React and Clojure/Luminus.
 
-## Development
+Clone the repository and start working on your application
 
-### Frontend
+## Frontend
 
 ```bash
 cd app
@@ -15,7 +15,7 @@ Application Url: `http://localhost:3333`.
 
 Api Proxy: `http://localhost:3333/api` -> `http://localhost:3334/api`.
 
-### Backend
+## Backend
 
 ```bash
 cd rest
