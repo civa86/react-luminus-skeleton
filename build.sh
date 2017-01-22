@@ -5,8 +5,16 @@ SERVER_PORT=8080
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_NAME=`basename "$PWD"`
 
-REST_APP_NAME=rest
-REST_TARGET=$PROJECT_DIR/$REST_APP_NAME/target/uberjar/$REST_APP_NAME.jar
+# Setup
+APP_DIR=$PROJECT_DIR/app
+APP_PKG=$APP_DIR/dist
+
+REST_DIR=$PROJECT_DIR/rest
+REST_TARGET=$REST_DIR/target/uberjar/rest.jar
+
+DIST_DIR=$PROJECT_DIR/dist
+RESOURCES_DIR=$REST_DIR/env/prod/resources
+#TODO test for external reosurce --- $PROJECT_DIR/dist/resources
 
 # Functions
 function separator () {
@@ -15,42 +23,46 @@ function separator () {
 
 # ----------------------- Execution ---------------------------------------------
 separator
-echo "BUILD: $PROJECT_NAME in $PROJECT_DIR/dist"
+echo "BUILD: $PROJECT_NAME in $DIST_DIR"
 separator
 
 # Prepare dist folder
-rm -rf ./dist
-mkdir dist
+rm -rf $DIST_DIR
+mkdir $DIST_DIR
+mkdir $RESOURCES_DIR
 
 # Frontend Distribution
-cd app
-npm run distribution || { echo "Fronted dist Failed"; exit 1; }
+cd $APP_DIR
+npm install || { echo "Fronted dependencies install failed"; exit 1; }
+npm run distribution || { echo "Fronted dist failed"; exit 1; }
 cd ..
 
+# Application Resources
+mkdir $RESOURCES_DIR/public
 
-# Backend Resources
-mkdir $PROJECT_DIR/rest/env/prod/resources/public
-cp -r $PROJECT_DIR/app/dist/assets $PROJECT_DIR/rest/env/prod/resources/public/
-cp -r $PROJECT_DIR/app/dist/css $PROJECT_DIR/rest/env/prod/resources/public/
-cp -r $PROJECT_DIR/app/dist/js $PROJECT_DIR/rest/env/prod/resources/public/
-cp -r $PROJECT_DIR/app/dist/*.txt $PROJECT_DIR/rest/env/prod/resources/public/
-cp -r $PROJECT_DIR/rest/resources/templates $PROJECT_DIR/rest/env/prod/resources/
-cat $PROJECT_DIR/app/dist/index.html > $PROJECT_DIR/rest/env/prod/resources/templates/base.html
+## public
+cp -r $APP_PKG/assets $RESOURCES_DIR/public/
+cp -r $APP_PKG/css $RESOURCES_DIR/public/
+cp -r $APP_PKG/js $RESOURCES_DIR/public/
+cp -r $APP_PKG/*.txt $RESOURCES_DIR/public/
+
+## templates
+cp -r $REST_DIR/resources/templates $RESOURCES_DIR/
+cat $APP_PKG/index.html > $RESOURCES_DIR/templates/base.html
 
 # Backend Tests and Distribution
-cd $REST_APP_NAME
-lein test || { echo "Backend Test Failed"; exit 1; }
+cd $REST_DIR
+lein test || { echo "Backend test failed"; exit 1; }
 lein uberjar
 cd ..
 
 ## Clean
-rm -rf $PROJECT_DIR/rest/env/prod/resources/templates
-rm -rf $PROJECT_DIR/rest/env/prod/resources/public
-
+rm -rf $RESOURCES_DIR/templates
+rm -rf $RESOURCES_DIR/public
 
 ## Copy Jar to dist
 cp $REST_TARGET $PROJECT_DIR/dist/
-mv $PROJECT_DIR/dist/$REST_APP_NAME.jar $PROJECT_DIR/dist/$PROJECT_NAME.jar
+mv $PROJECT_DIR/dist/rest.jar $PROJECT_DIR/dist/$PROJECT_NAME.jar
 
 # Run script
 echo "#!/bin/bash" > $PROJECT_DIR/dist/run.sh
