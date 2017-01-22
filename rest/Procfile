@@ -1,0 +1,1 @@
+web: java $JVM_OPTS -cp target/uberjar/rest.jar clojure.main -m rest.core
