@@ -35,14 +35,14 @@ Api Service Url: `http://localhost:3334/api`
 Build a stand alone folder `dist` with a full running application
 
 ```bash
-./build.sh (-p | --port <PORT>) (-n | --name <NAME>)
+./build.sh (-p|--port <PORT>) (-n|--name <NAME>)
 ```
 
 #### Optional Arguments
 
--p | --port: default server port
+-p|--port: default server port
 
--n | --name: application name
+-n|--name: application name
 
 #### dist
 
@@ -51,9 +51,9 @@ Build a stand alone folder `dist` with a full running application
 Start application on default server port
 
 ```bash
-./dist/run.sh (-p | --port <PORT>)
+./dist/run.sh (-p|--port <PORT>)
 ```
 
 #### Optional Arguments
 
--p | --port: override the default server port
+-p|--port: override the default server port
