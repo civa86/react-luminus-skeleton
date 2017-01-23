@@ -4,6 +4,7 @@
 SERVER_PORT=8080
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_NAME=`basename "$PWD"`
+RUN_TPL=`cat $PROJECT_DIR/run.script.shmodel`
 
 # Setup
 APP_DIR=$PROJECT_DIR/app
@@ -14,7 +15,6 @@ REST_TARGET=$REST_DIR/target/uberjar/rest.jar
 
 DIST_DIR=$PROJECT_DIR/dist
 RESOURCES_DIR=$REST_DIR/env/prod/resources
-#TODO test for external reosurce --- $PROJECT_DIR/dist/resources
 
 # Functions
 function separator () {
@@ -22,14 +22,23 @@ function separator () {
 }
 
 # ----------------------- Execution ---------------------------------------------
+while test $# -ne 0; do
+    case $1 in
+        -p|--port) shift; SERVER_PORT=$1;;
+        -n|--name) shift; PROJECT_NAME=$1;;
+    esac
+    shift
+done
+
 separator
 echo "BUILD: $PROJECT_NAME in $DIST_DIR"
+echo "Server default port: $SERVER_PORT"
 separator
+
 
 # Prepare dist folder
 rm -rf $DIST_DIR
 mkdir $DIST_DIR
-mkdir $RESOURCES_DIR
 
 # Frontend Distribution
 cd $APP_DIR
@@ -65,9 +74,8 @@ cp $REST_TARGET $PROJECT_DIR/dist/
 mv $PROJECT_DIR/dist/rest.jar $PROJECT_DIR/dist/$PROJECT_NAME.jar
 
 # Run script
-echo "#!/bin/bash" > $PROJECT_DIR/dist/run.sh
-echo "JAR_DIR=\"\$( cd \"\$( dirname \"\${BASH_SOURCE[0]}\" )\" && pwd )\"" >> $PROJECT_DIR/dist/run.sh
-echo "cd \$JAR_DIR" >> $PROJECT_DIR/dist/run.sh
-echo "export PORT=$SERVER_PORT" >> $PROJECT_DIR/dist/run.sh
-echo "java -jar ./$PROJECT_NAME.jar" >> $PROJECT_DIR/dist/run.sh
+RUN_TPL="${RUN_TPL/__SERVER_PORT__/$SERVER_PORT}"
+RUN_TPL="${RUN_TPL//__PROJECT_NAME__/$PROJECT_NAME}"
+
+echo "$RUN_TPL" > $PROJECT_DIR/dist/run.sh
 chmod a+x $PROJECT_DIR/dist/run.sh

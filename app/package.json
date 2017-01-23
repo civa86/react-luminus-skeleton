@@ -19,7 +19,8 @@
     "jquery": "1.12.1",
     "bootstrap": "3.3.6",
     "ionicons": "2.0.1",
-    "moment": "2.13.0"
+    "moment": "2.13.0",
+    "isomorphic-fetch": "2.1.1"
   },
   "devDependencies": {
     "babel-cli": "6.18.0",

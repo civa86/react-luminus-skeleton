@@ -37,7 +37,13 @@
         pluginsSet = [
             new webpack.optimize.CommonsChunkPlugin("vendor", "js/vendor.[hash].js"),
             new webpack.optimize.OccurenceOrderPlugin(),
-            new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+            new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.UglifyJsPlugin({
+                minimize: true,
+                output: {
+                    comments: false
+                }
+            }),
             new HtmlWebpackPlugin({
                 template: path.join(__dirname, 'index.html'),
                 inject: 'body'

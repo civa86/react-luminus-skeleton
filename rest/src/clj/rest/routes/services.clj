@@ -20,13 +20,11 @@
     (GET "/info" []
       :return   s/Any
       :summary  ""
-      (Thread/sleep 1000)
       (ok {:version project-version}))
 
     (GET "/*" []
       :return   s/Any
       :summary  "Not Matched Api Route"
-      (Thread/sleep 1000)
       (not-found {:code 404 :error "Resource not found"}))
 
     ))

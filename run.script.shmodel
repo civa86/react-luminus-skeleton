@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SERVER_PORT=__SERVER_PORT__
+
+while test $# -ne 0; do
+    case $1 in
+        -p|--port) shift; SERVER_PORT=$1;;
+    esac
+    shift
+done
+
+JAR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $JAR_DIR
+echo "Starting __PROJECT_NAME__ at port: $SERVER_PORT"
+export PORT=$SERVER_PORT
+java -jar ./__PROJECT_NAME__.jar

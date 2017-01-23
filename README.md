@@ -30,28 +30,32 @@ Launch server inside REPL with `(start)` function.
 
 Api Service Url: `http://localhost:3334/api`.
 
-
-
-
 ## Build
 
-Produce a stand alone folder `dist` with a running application.
-
-Pass the port which the application will run at.
+Build a stand alone folder `dist` with a full running application.
 
 ```bash
-./build.sh -p <PORT>
-
-> dist
-...dist folder...
+./build.sh (-p | --port <PORT>) (-n | --name <NAME>)
 ```
+
+#### Optional Arguments
+
+-p | --port: default server port.
+
+-n | --name: application name.
+
+#### dist
 
 ## Run
 
-Start application on port chosen in the #Build step.
+Start application on default server port.
 
 ```bash
-./dist/run.sh
+./dist/run.sh (-p | --port <PORT>)
 ```
+
+#### Optional Arguments
+
+-p | --port: override the default server port.
 
 
