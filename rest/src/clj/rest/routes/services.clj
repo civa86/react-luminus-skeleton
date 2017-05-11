@@ -5,8 +5,6 @@
             [clojure.string :as str]
             [schema.core :as s]))
 
-(def project-version "1.0.0")
-
 (defapi service-routes
   {:swagger {:ui "/swagger-ui"
              :spec "/swagger.json"
@@ -17,10 +15,10 @@
   (context "/api" []
     :tags ["thingie"]
 
-    (GET "/info" []
+    (GET "/" []
       :return   s/Any
       :summary  ""
-      (ok {:version project-version}))
+      (ok {:version (System/getProperty "rest.version")}))
 
     (GET "/*" []
       :return   s/Any

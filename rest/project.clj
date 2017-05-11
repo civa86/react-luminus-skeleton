@@ -4,24 +4,23 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[bouncer "1.0.0"]
-                 [compojure "1.5.2"]
-                 [cprop "0.1.10"]
-                 [luminus-immutant "0.2.3"]
+                 [compojure "1.5.1"]
+                 [cprop "0.1.9"]
+                 [luminus-immutant "0.2.2"]
                  [luminus-nrepl "0.1.4"]
                  [markdown-clj "0.9.91"]
-                 [metosin/compojure-api "1.1.10"]
-                 [metosin/ring-http-response "0.8.1"]
-                 [mount "0.1.11"]
+                 [metosin/compojure-api "1.1.9"]
+                 [metosin/ring-http-response "0.8.0"]
+                 [mount "0.1.10"]
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.cli "0.3.5"]
                  [org.clojure/tools.logging "0.3.1"]
-                 [org.webjars.bower/tether "1.4.0"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
                  [ring-middleware-format "0.7.0"]
                  [ring-webjars "0.1.1"]
                  [ring/ring-core "1.5.1"]
-                 [ring/ring-defaults "0.2.2"]
-                 [selmer "1.10.5"]]
+                 [ring/ring-defaults "0.2.1"]
+                 [selmer "1.10.2"]]
 
   :min-lein-version "2.0.0"
 
