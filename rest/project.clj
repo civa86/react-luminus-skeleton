@@ -8,6 +8,8 @@
                  [cprop "0.1.9"]
                  [luminus-immutant "0.2.2"]
                  [luminus-nrepl "0.1.4"]
+                 [conman "0.5.8"]
+                 [mysql/mysql-connector-java "5.1.6"]
                  [markdown-clj "0.9.91"]
                  [metosin/compojure-api "1.1.9"]
                  [metosin/ring-http-response "0.8.0"]
