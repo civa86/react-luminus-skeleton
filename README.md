@@ -22,6 +22,12 @@ cd rest
 lein run
 ```
 
+#### Flyway: Database Migrations
+
+```bash
+DATABASE_URL="jdbc:mysql://<db-host>/<db-name>?user=<db-user>&password=<db-passwd>" lein flyway <task>
+```
+
 #### REPL development
 
 Run `lein repl`

@@ -49,7 +49,8 @@
                                  [ring/ring-mock "0.3.0"]
                                  [ring/ring-devel "1.5.1"]
                                  [pjstadig/humane-test-output "0.8.1"]]
-                  :plugins      [[com.jakemccrary/lein-test-refresh "0.18.1"]]
+                  :plugins      [[com.jakemccrary/lein-test-refresh "0.18.1"]
+                                 [com.github.metaphor/lein-flyway "4.0.1"]]
 
                   :source-paths ["env/dev/clj" "test/clj"]
                   :resource-paths ["env/dev/resources"]
@@ -59,4 +60,11 @@
    :project/test {:resource-paths ["env/test/resources"]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.18.1"]]}
    :profiles/dev {}
-   :profiles/test {}})
+   :profiles/test {}}
+   ;; Flyway Database Migration configuration
+   :flyway {;; Database connection
+            :driver "com.mysql.jdbc.Driver"
+            :url ~(str (System/getenv "DATABASE_URL"))
+            :locations ["filesystem:./resources/sql-migrations"]
+            }
+  )
