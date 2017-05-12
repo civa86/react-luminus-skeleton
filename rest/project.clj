@@ -63,8 +63,12 @@
    :profiles/test {}}
    ;; Flyway Database Migration configuration
    :flyway {;; Database connection
-            :driver "com.mysql.jdbc.Driver"
-            :url ~(str (System/getenv "DATABASE_URL"))
+            :url ~(-> "profiles.clj"
+                    slurp
+                    read-string
+                    (get :profiles/dev)
+                    (get :env)
+                    (get :database-url))
             :locations ["filesystem:./resources/sql-migrations"]
             }
   )

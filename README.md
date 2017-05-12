@@ -4,6 +4,8 @@ Skeleton for a Web Application based on React and Clojure/Luminus
 
 Clone the repository and start working on your application
 
+#### profile.clj
+
 ## Frontend
 
 ```bash
@@ -25,7 +27,7 @@ lein run
 #### Flyway: Database Migrations
 
 ```bash
-DATABASE_URL="jdbc:mysql://<db-host>/<db-name>?user=<db-user>&password=<db-passwd>" lein flyway <task>
+lein flyway <task>
 ```
 
 #### REPL development
