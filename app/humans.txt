@@ -3,9 +3,8 @@
 
 # TEAM
 
-    <Dario Civallero> -- <Web Developer> -- <https://github.com/civa86>
+    <Firstname Lastname> -- <Role> -- <github>
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, JAVASCRIPT
-    React, Redux, ES6, WebAudio API
+    HTML5, CSS3, Less, JavaScript, React, Redux

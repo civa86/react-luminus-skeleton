@@ -10,10 +10,10 @@ import Root from './containers/Root';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.css';
-import 'imports?jQuery=jquery!bootstrap/dist/js/bootstrap';
+import 'imports-loader?jQuery=jquery!bootstrap/dist/js/bootstrap';
 
 // Ionicons
-import 'ionicons/css/ionicons.css';
+import 'ionicons/dist/css/ionicons.css';
 
 // Application Style
 import '../less/screen.less';

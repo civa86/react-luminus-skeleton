@@ -1,6 +1,6 @@
 (defproject rest "0.1.0-SNAPSHOT"
 
-  :description "FIXME: write description"
+  :description "React Luminus Skeleton, Backend"
   :url "http://example.com/FIXME"
 
   :dependencies [[bouncer "1.0.0"]
@@ -69,6 +69,6 @@
                     (get :profiles/dev)
                     (get :env)
                     (get :database-url))
-            :locations ["filesystem:./resources/sql-migrations"]
+            :locations ["filesystem:./resources/db-migrations"]
             }
   )

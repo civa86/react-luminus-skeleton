@@ -1,6 +1,6 @@
 var webpack = require('webpack'),
     WebpackDevServer = require('webpack-dev-server'),
-    config = require('./webpack.config'),
+    config = require('./webpack.config.dev'),
     fs = require('fs'),
     restConfiguration = fs.readFileSync('../rest/env/dev/resources/config.edn', 'utf8'),
     restPort = restConfiguration.replace(/{/g, '')
@@ -27,11 +27,10 @@ new WebpackDevServer(webpack(config), {
             target: 'http://localhost:' + restPort
         }
     }
-
-}).listen(config.port, '0.0.0.0', function (err) {
+}).listen(3000, '0.0.0.0', function (err) {
     if (err) {
         console.log(err);
     }
 
-    console.log('Listening at localhost:' + config.port);
+    console.log('Listening at localhost:3000');
 });

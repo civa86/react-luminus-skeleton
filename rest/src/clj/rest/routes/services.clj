@@ -21,10 +21,10 @@
       :summary  ""
       (ok {:version (System/getProperty "rest.version")}))
 
-    (GET "/users" []
-      :return   s/Any
-      :summary  ""
-      (ok (db/get-users)))
+    ;(GET "/users" []
+    ;  :return   s/Any
+    ;  :summary  ""
+    ;  (ok (db/get-users)))
 
     (GET "/*" []
       :return   s/Any
