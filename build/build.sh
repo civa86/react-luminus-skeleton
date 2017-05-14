@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#TODO writa a uniqe var file!!
+#TODO writa a uniqe var file!! and refactor to work inside build dir....
 # VARS
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_NAME=`basename "$PWD"`
