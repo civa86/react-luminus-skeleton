@@ -89,11 +89,12 @@
     "build:package": "NODE_ENV=production webpack --config webpack.config.prod.js --progress --colors --profile --bail",
     "build": "npm run build:clean && npm run build:package",
 
-    "distribution": "npm test -- --bail && npm run build",
+    "dist": "npm test -- --bail && npm run build",
 
     "test": "NODE_ENV=test mocha ./test/**/*.js --reporter spec --compilers js:babel-core/register --recursive --colors",
     "test:watch": "npm test -- --watch",
-    "test:rest": "cd ../rest; lein test-refresh :change-only",
+    "test:rest": "cd ../rest; lein test",
+    "test:rest:watch": "cd ../rest; lein test-refresh :change-only",
 
     "db:clean": "cd ../rest; lein flyway clean",
     "db:migrate": "cd ../rest; lein flyway migrate",

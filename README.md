@@ -2,13 +2,7 @@
 
 Skeleton for a Web Application based on React and Clojure.
 
-Application structure:
-
-- Frontend: React / Redux
-- Backend: Clojure Luminus
-- Database: MySql
-
-## Usage: setup and development
+## Development
 
 Clone the repository and setup `new-project`
 
@@ -64,13 +58,23 @@ $ touch profiles.clj
 
 #### Database
 
-Run Flyway migration
+`db-migrations` folder, under rest resources, contains all migrations file for Flyway.
+
+File naming convention: `V<incremental_number>__<migration-name>.sql
+
+Migrations sample: `V1__my-first-table.sql`
+
+*Run Flyway migration*
 
 ```bash
 $ lein flyway migrate
 ```
 
-Migrations in....
+*Clean database*
+
+```bash
+$ lein flyway clean
+```
 
 #### Rest Service
 
@@ -121,71 +125,36 @@ $ cd app
 $ npm install
 ```
 
+#### Development Server
 
-
-<br><br><br><br><br><br><br><br>
-OLD....:
-
-Clone the repository and start working on your application
-
-#### profile.clj
-
-## Frontend
+Run Webpack development server: `http://localhost:3333`
 
 ```bash
-cd app
-npm run development
+$ npm run development
 ```
 
-Application Url: `http://localhost:3333`
-
-Api Proxy: `http://localhost:3333/api` -> `http://localhost:3334/api`
-
-## Backend
+#### NPM Tasks
 
 ```bash
-cd rest
-lein run
+$ npm run <task>
 ```
 
-#### Flyway: Database Migrations
+| Task             | Description                  |
+| ---------------- | ---------------------------- |
+| development      | run development server       |
+| test             | app unit test single run     |
+| test:watch       | app unit test watcher        |
+| test:rest        | rest unit test single run    |
+| test:rest:watch  | rest unit test watcher       |
+| build            | app build                    |
+| dist             | app test and build           |
+| db:clean         | database clean               |
+| db:migrate       | database migration           |
+| db:rebuild       | database clean and migration |
+| db:info          | database status              |
 
-```bash
-lein flyway <task>
-```
-
-#### REPL development
-
-Run `lein repl`
-
-Launch server inside REPL with `(start)` function
-
-Api Service Url: `http://localhost:3334/api`
+## Unit Test
 
 ## Build
 
-Build a stand alone folder `dist` with a full running application
-
-```bash
-./build.sh (-p|--port <PORT>) (-n|--name <NAME>)
-```
-
-#### Optional Arguments
-
--p|--port: default server port
-
--n|--name: application name
-
-#### dist
-
-## Run
-
-Start application on default server port
-
-```bash
-./dist/run.sh (-p|--port <PORT>)
-```
-
-#### Optional Arguments
-
--p|--port: override the default server port
+...
