@@ -43,11 +43,8 @@ const Header = (props) => {
                                        <div className="row">
                                            <div className="col-md-12">
                                                <form className="form" role="form" method="post" action="login" acceptCharset="UTF-8" id="login-nav">
-
+                                                    form
                                                </form>
-                                           </div>
-                                           <div className="bottom text-center">
-                                               New here ? <a href="#"><b>Join Us</b></a>
                                            </div>
                                        </div>
                                    </li>
