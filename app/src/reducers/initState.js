@@ -1,8 +1,9 @@
 const initState = {
-    app: {
-        isFetching: false,
-        info: null,
-        error: null
+    user: {
+        requests: {},
+        errors: {},
+        accessToken: null, //TODO ??
+        profile: {}
     }
 };
 
