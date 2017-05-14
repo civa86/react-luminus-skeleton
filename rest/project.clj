@@ -1,6 +1,6 @@
 (defproject rest "0.1.0-SNAPSHOT"
 
-  :description "React Luminus Skeleton, Backend"
+  :description "FIXME"
   :url "http://example.com/FIXME"
 
   :dependencies [[bouncer "1.0.0"]
