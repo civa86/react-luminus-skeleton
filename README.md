@@ -127,7 +127,7 @@ $ npm install
 
 #### Development Server
 
-Run Webpack development server: `http://localhost:3333`
+Run Webpack development server: `http://localhost:3000`
 
 ```bash
 $ npm run development
