@@ -17,6 +17,8 @@ $ git init
 
 ```bash
 .
+├── app                     # app folder
+├── build                   # build folder
 ├── rest                    # rest folder
 │   ├── env                 ## rest env folder
 │   ├── resources           ## rest resources
@@ -27,10 +29,8 @@ $ git init
 │   ├── test                ## rest unit tests
 │   ├── profiles.clj        ## development and testing configuration file
 │   └── project.clj         ## rest project main file
-├── app                     # app folder
-├── build                   # build folder
 ├── config.prod.edn         # production conf sample
-└── README.md # Project     # readme file
+└── README.md               # readme file
 ```
 
 Enter in the `rest` folder
@@ -95,7 +95,6 @@ $ lein repl
 
 ```bash
 .
-├── rest                        # rest folder
 ├── app                         # app folder
 │   ├── img                     ## images asset folder
 │   ├── less                    ## less source files
@@ -109,8 +108,9 @@ $ lein repl
 │   ├── webpack.config.dev.js   ## webpack development configuration
 │   └── webpack.config.prod.js  ## webpack production configuration
 ├── build                       # build folder
+├── rest                        # rest folder
 ├── config.prod.edn             # production conf sample
-└── README.md # Project         # readme
+└── README.md                   # readme file
 ```
 
 Enter in the `app` folder
