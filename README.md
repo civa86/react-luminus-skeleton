@@ -29,7 +29,6 @@ $ git init
 │   ├── test                ## rest unit tests
 │   ├── profiles.clj        ## development and testing configuration file
 │   └── project.clj         ## rest project main file
-├── config.prod.edn         # production conf sample
 └── README.md               # readme file
 ```
 
@@ -109,7 +108,6 @@ $ lein repl
 │   └── webpack.config.prod.js  ## webpack production configuration
 ├── build                       # build folder
 ├── rest                        # rest folder
-├── config.prod.edn             # production conf sample
 └── README.md                   # readme file
 ```
 
