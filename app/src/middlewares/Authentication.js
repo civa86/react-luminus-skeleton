@@ -32,20 +32,21 @@ const AuthenticationMiddleware = store => next => action => {
                 return clearSession(store.dispatch);
             }
 
-            case '@@router/LOCATION_CHANGE' : {
-                const
-                    token = Cookies.get('logged_in'),
-                    isAuth = !!token;
-
-                if (action.payload.pathname === '/login' && isAuth) {
-                    return store.dispatch(push('/'));
-                } else if (action.payload.pathname !== '/login' && !isAuth) {
-                    return store.dispatch(push('/login'));
-
-                } else if (isAuth) {
-                    return store.dispatch(userActions.setAccessToken(token));
-                }
-            }
+                //TODO decorate routes with onEnter....
+            // case '@@router/LOCATION_CHANGE' : {
+            //     const
+            //         token = Cookies.get('logged_in'),
+            //         isAuth = !!token;
+            //
+            //     if (action.payload.pathname === '/login' && isAuth) {
+            //         return store.dispatch(push('/'));
+            //     } else if (action.payload.pathname !== '/login' && !isAuth) {
+            //         return store.dispatch(push('/login'));
+            //
+            //     } else if (isAuth) {
+            //         return store.dispatch(userActions.setAccessToken(token));
+            //     }
+            // }
         }
 
     }

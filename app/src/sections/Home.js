@@ -15,10 +15,8 @@ class Home extends Component {
     }
 }
 
-function mapStateToProps (state) {
-    return {
-        app: state.app
-    };
+function mapStateToProps () {
+    return {};
 }
 
 export default connect(mapStateToProps)(Home);

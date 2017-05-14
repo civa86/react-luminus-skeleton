@@ -1,35 +1,9 @@
 import * as actionTypes from '../constants/ActionTypes';
 import initState from './initState';
 
-function app (state = initState.app, action = {}) {
+function user (state = initState.user, action = {}) {
 
     switch (action.type) {
-
-        case actionTypes.APP_REQUEST : {
-            return {
-                ...state,
-                isFetching: true,
-                error: null
-            }
-        }
-
-        case actionTypes.APP_GET_INFO_SUCCESS : {
-            return {
-                ...state,
-                isFetching: false,
-                info: action.data,
-                error: null
-            }
-        }
-
-        case actionTypes.APP_GET_INFO_ERROR : {
-            return {
-                ...state,
-                isFetching: false,
-                error: action.error,
-                info: null
-            }
-        }
 
         default : {
             return state;
@@ -38,4 +12,4 @@ function app (state = initState.app, action = {}) {
     }
 }
 
-export default app;
+export default user;

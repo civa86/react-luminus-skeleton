@@ -6,12 +6,12 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 
-import ErrorsMiddleware from '../middlewares/ErrorsMiddleware';
+import ErrorMiddleware from '../middlewares/Error';
 
 const enhancer = compose(
     applyMiddleware(
         thunk,
-        ErrorsMiddleware,
+        ErrorMiddleware,
         routerMiddleware(browserHistory)
     ),
     DevTools.instrument(),

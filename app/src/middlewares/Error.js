@@ -2,7 +2,7 @@
 
 // import * as actionTypes from '../constants/ActionTypes';
 
-const ErrorsMiddleware = (/*store*/) => next => action => {
+const ErrorMiddleware = (/*store*/) => next => action => {
     let result = next(action);
 
     // if (action && action.type) {
@@ -25,4 +25,4 @@ const ErrorsMiddleware = (/*store*/) => next => action => {
     return result;
 };
 
-export default ErrorsMiddleware;
+export default ErrorMiddleware;
