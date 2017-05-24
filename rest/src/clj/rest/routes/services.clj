@@ -11,9 +11,11 @@
              :data {:info {:version (System/getProperty "rest.version")
                            :title "FIXME"
                            :description "FIXME"}}
-             :exception {:handlers {
-                                    ::ex/default (resp/error-generic)
-                                    }}}}
+             }
+   :exceptions {:handlers {
+                           ::schema.core/error (resp/error-bad-request)
+                           ::ex/default (resp/error-generic)
+                           }}}
 
   (context "/api" []
     (routes
