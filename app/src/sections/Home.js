@@ -14,7 +14,8 @@ class Home extends Component {
             <section id="home">
                 <h1>Home Page</h1>
                 <FileUploadForm submitAction={submit}
-                                acceptedTypes="zip,less"/>
+                                acceptedTypes="zip,less"
+                                fieldName="testfile"/>
             </section>
         );
     }

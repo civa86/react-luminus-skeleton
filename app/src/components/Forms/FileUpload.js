@@ -43,6 +43,7 @@ class FileUploadForm extends Component {
     render () {
         const {
             acceptedTypes,
+            fieldName,
             handleSubmit,
             submitAction,
             submitting,
@@ -69,7 +70,8 @@ class FileUploadForm extends Component {
 }
 
 FileUploadForm.propTypes = {
-    acceptedTypes: PropTypes.string.isRequired
+    acceptedTypes: PropTypes.string.isRequired,
+    fieldName: PropTypes.string.isRequired
 };
 
 export default reduxForm({
