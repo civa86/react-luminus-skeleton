@@ -40,16 +40,15 @@
       ;:return s/Any
       :summary ""
       (do
-        (as-> (db/get-users) $
-              (generate-sheet "asd" $ SHEET)
-              (xls/save-workbook! "/tmp/asd.xlsx" $))
-        {
-         :status  200
-         :headers {"Content-Disposition" (str "attachment;" "filename=\"asd.xlsx\"" )}
-         :body (clojure.java.io/file "/tmp/asd.xlsx")
-         }
-        )
-      )
+        (clojure.java.io/delete-file "/tmp/asd.xlsx" true)
+        (let [output (as-> (db/get-users) $
+                           (generate-sheet "asd" $ SHEET)
+                           (xls/save-workbook! "/tmp/asd.xlsx" $)
+                           (clojure.java.io/file "/tmp/asd.xlsx"))]
+          {:status  200
+           :headers {"Content-Disposition" (str "attachment;" "filename=\"asd.xlsx\"" )}
+           :body output})
+        ))
 
     (GET "/*" request
       :return s/Any
