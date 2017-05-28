@@ -4,31 +4,27 @@
             [clojure.tools.logging :as log]
             [rest.db.core :refer [*db*] :as db]
             [schema.core :as s]
+            [dk.ative.docjure.spreadsheet :as xls]
             [clojure.string :as str]))
 
-(def SHEET [{:label "Full Name" :fields [:firstname :lastname]}
+(def SHEET [{:label "Full Name" :fields [:firstname :lastname] :separator " - "}
             {:label "Email" :fields [:email]}])
 
 (defn extract-from-item
-  [item fields]
+  [item fields separators]
   (into [] (->> fields
                 (map #(reduce (fn [m v] (conj m (get item v ""))) [] %))
-                (map #(into [] %))
                 (map #(remove nil? %))
-                (map #(str/join ", " %))
-                ))
-  )
+                (map-indexed (fn [i x] (str/join (nth separators i) x))))))
 
-(defn generate-sheet [items struct]
+(defn generate-sheet [name items struct]
   (let [header (map #(get % :label) struct)
         fields (map #(get % :fields []) struct)
-        entries (map #(extract-from-item % fields) items)
-        ]
+        separators (map #(get % :separator "") struct)
+        entries (map #(extract-from-item % fields separators) items)]
 
-    (clojure.pprint/pprint [(into [] header) (into [] entries)])
-    )
-
-  )
+    (xls/create-workbook name
+                         (concat [(into [] header)] (into [] entries)))))
 
 (def ctx-general
   (context "/" []
@@ -41,10 +37,19 @@
 
     ;TODO remove...just a test
     (GET "/download" []
-      :return s/Any
+      ;:return s/Any
       :summary ""
-      (generate-sheet (db/get-users) SHEET)
-      (ok {:version (System/getProperty "rest.version")}))
+      (do
+        (as-> (db/get-users) $
+              (generate-sheet "asd" $ SHEET)
+              (xls/save-workbook! "/tmp/asd.xlsx" $))
+        {
+         :status  200
+         :headers {"Content-Disposition" (str "attachment;" "filename=\"asd.xlsx\"" )}
+         :body (clojure.java.io/file "/tmp/asd.xlsx")
+         }
+        )
+      )
 
     (GET "/*" request
       :return s/Any
