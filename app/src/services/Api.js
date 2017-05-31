@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
+//TODO check for middleware
+
 const ApiService = (dispatch = null, path = '/api') => {
     if (typeof dispatch !== 'function') {
         throw new Error('dispatch handler is missing.');
@@ -29,15 +31,15 @@ const ApiService = (dispatch = null, path = '/api') => {
     }
 
     function getEndpoint () {
-        if (process.env.NODE_ENV === 'test') {
-            return 'http://test' + path
-        } else if (window && window.location) {
+        if (window && window.location) {
             return (
                 window.location.protocol + '//' +
                 window.location.hostname +
                 (window.location.port ? ':' + window.location.port : '') +
                 path
             );
+        } else {
+            return 'http://domain.ext' + path
         }
     }
 
