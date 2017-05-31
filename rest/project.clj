@@ -22,10 +22,6 @@
                  [ring-webjars "0.1.1"]
                  [ring/ring-core "1.5.1"]
                  [ring/ring-defaults "0.2.1"]
-
-                 ;TODO remove...
-                 [dk.ative/docjure "1.11.0"]
-
                  [selmer "1.10.2"]]
 
   :min-lein-version "2.0.0"

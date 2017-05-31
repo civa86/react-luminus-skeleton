@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import FileUploadForm from '../components/Forms/FileUpload';
-
-const submit = (values) => {
-    console.log(values);
-};
+import * as fooActions from '../actions/FooActions';
 
 class Home extends Component {
+
+    componentDidMount () {
+        const { dispatch } = this.props;
+        dispatch(fooActions.getVersion());
+    }
 
     render () {
         return (
             <section id="home">
-                <h1>Home Page</h1>
-                <FileUploadForm submitAction={submit}
-                                acceptedTypes="zip,less"
-                                fieldName="testfile"/>
+                asd
             </section>
         );
     }

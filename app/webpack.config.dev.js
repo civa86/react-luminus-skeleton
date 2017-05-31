@@ -36,18 +36,18 @@
         ],
         module: {
             rules: [
-                {
-                    enforce: 'pre',
-                    test: /\.js$/,
-                    loader: 'eslint-loader',
-                    include: path.join(__dirname, 'src'),
-                    options: {
-                        emitError: false,
-                        emitWarning: true,
-                        failOnWarning: false,
-                        failOnError: false
-                    }
-                },
+                // { //TODO activate....
+                //     enforce: 'pre',
+                //     test: /\.js$/,
+                //     loader: 'eslint-loader',
+                //     include: path.join(__dirname, 'src'),
+                //     options: {
+                //         emitError: false,
+                //         emitWarning: true,
+                //         failOnWarning: false,
+                //         failOnError: false
+                //     }
+                // },
                 {
                     test: /\.js$/,
                     loader: 'babel-loader',
