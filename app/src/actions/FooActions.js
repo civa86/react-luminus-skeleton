@@ -23,16 +23,28 @@ function getVersionForbidden (data) {
 }
 
 function getVersion () {
-    return dispatch => {
-        return api(dispatch).fetch({
+    return {
+        type: 'FOO_GET_VERSION',
+        $api: {
             method: 'GET',
             resource: '/',
             type: 'json',
             success: getVersionSuccess,
             error: getVersionError,
             forbidden: getVersionForbidden
-        });
-    }
+        }
+    };
+
+    // return dispatch => {
+    //     return api(dispatch).fetch({
+    //         method: 'GET',
+    //         resource: '/',
+    //         type: 'json',
+    //         success: getVersionSuccess,
+    //         error: getVersionError,
+    //         forbidden: getVersionForbidden
+    //     });
+    // }
 }
 
 export {

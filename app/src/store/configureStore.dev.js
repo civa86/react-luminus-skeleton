@@ -7,11 +7,13 @@ import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 
 import ErrorMiddleware from '../middlewares/Error';
+import ApiMiddleware from '../middlewares/Api';
 
 const enhancer = compose(
     applyMiddleware(
         thunk,
         ErrorMiddleware,
+        ApiMiddleware,
         routerMiddleware(browserHistory)
     ),
     DevTools.instrument(),

@@ -4,11 +4,13 @@ import { browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
-import ErrorsMiddleware from '../middlewares/ErrorsMiddleware';
+import ErrorMiddleware from '../middlewares/Error';
+import ApiMiddleware from '../middlewares/Api';
 
 const enhancer = applyMiddleware(
     thunk,
-    ErrorsMiddleware,
+    ErrorMiddleware,
+    ApiMiddleware,
     routerMiddleware(browserHistory)
 );
 
